@@ -1,4 +1,4 @@
-export default()=>{
+const responseData=()=>{
     return {
         "type": "top-5-movies",
         "components": [
@@ -68,3 +68,5 @@ export default()=>{
         ]
     }
 }
+
+export default responseData

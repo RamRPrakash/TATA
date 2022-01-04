@@ -1,8 +1,7 @@
-import React , {useState , useEffect} from 'react'
+import React  from 'react'
 import MLAppBar from '../component/MLAppBar'
 import MLMovieCard from '../component/MLMovieCard'
-import Grid from '@material-ui/core/Grid';
-import filterType from '../../../redux' 
+import Grid from '@material-ui/core/Grid'; 
 import { connect } from 'react-redux'
 
 function MovieList(props){
@@ -14,7 +13,7 @@ function MovieList(props){
            {
                     props.FinalList.map((item)=>{
                     return(
-                        <Grid  item xs={12} md={6} lg={4} sm={12}> 
+                        <Grid key={`MvList_${item.title}`} className="roll-out" item xs={12} md={6} lg={4} sm={12}> 
                             <MLMovieCard title={item.title} stars={item.rank} years={item.releaseDate} synopsis={item.synopsis} img={item.imageUrl} />
                         </Grid>
                     )

@@ -23,3 +23,12 @@ width: 0px;
     display: flex;
     justify-content: center;
 }
+
+@keyframes rollout {
+  0% { transform: translateX(-100px); }
+  100% { transform: none; }
+}
+
+.roll-out {
+  animation: rollout 1.0s;
+}

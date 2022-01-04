@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import StarIcon from '@material-ui/icons/Star';
 
 const useStyles = makeStyles((theme) => ({
@@ -57,13 +56,7 @@ export default function MLMovieCard({ title, stars, years, synopsis , img }) {
                         {title[0]}
             </Avatar>
                 }
-                action={
-                    <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                    </IconButton>
-                }
                 title={title}
-               
             />
             <CardMedia
                 component="img"
@@ -75,12 +68,12 @@ export default function MLMovieCard({ title, stars, years, synopsis , img }) {
                 <IconButton aria-label="add to favorites">
                     {
                         starList.map(item=>{
-                            return <StarIcon style={{ color: '#f7ca18' }} />
+                            return <StarIcon key={`MlMovieCard_${item}`} style={{ color: '#f7ca18' }} />
                         })
                     }
                 </IconButton>
                 <div style={{marginLeft : '10%'}}>
-                    <span>Years </span>
+                    <span>Year </span>
                     <span style={{ color: '#3498db' }}>{years}</span>
                    </div> 
                 <IconButton

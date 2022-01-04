@@ -19,7 +19,7 @@ export default function MLSelectField({ onChange, menuData, value}){
                 {
                     menuData.map((item)=>{
                         return (
-                            <MenuItem value={item}>{item}</MenuItem>
+                            <MenuItem key={`mlSelect${item}`} value={item}>{item}</MenuItem>
                         )
                     })
                 }

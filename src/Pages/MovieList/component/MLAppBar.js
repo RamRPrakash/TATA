@@ -1,4 +1,4 @@
-import React ,{useState } from 'react'
+import React ,{useState , useEffect } from 'react'
 import MLSelectField from '../../../Components/MLSelectField'
 import Response from './Response'
 import filterType from '../../../redux'
@@ -8,13 +8,15 @@ import {connect} from 'react-redux'
     var ListOfMovies = Response()
     const displayOrder = ListOfMovies.components.filter(item => item.type.toLowerCase() === 'order-select')
     const menuData = displayOrder.map(x=>x.items.map(list=> list.label))
-    const [filterValue , setFilterValue] = useState()
+    const [filterValue , setFilterValue] = useState(menuData[0][0])
     //const [selectedDatas, setselectedData] = useState('')
     const handleChange =(e)=>{
         setFilterValue(e.target.value)
+        console.log(menuData)
+        console.log(e)
         var selectedData =''
-        displayOrder.map(x=>{
-            x.items.map((item)=>{
+        displayOrder.forEach(x=>{
+            x.items.forEach((item)=>{
                 if(item.label === e.target.value){
                     selectedData = item.valueToOrderBy
                 }
@@ -24,6 +26,12 @@ import {connect} from 'react-redux'
         // console.log(props.filterType(selectedData))
         //setselectedData(selectedData)
     }
+    useEffect(()=>{
+        const data = {target : {value : menuData[0][0]}}
+        handleChange(data)
+
+         // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
     return (
         <div className="appBar" >
             <h3 style={{width : '50%'}}>80's Favourite Movies</h3>
