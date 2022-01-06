@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MLMovieCard({ title, stars, years, synopsis , img }) {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = React.useState(true);
     const starList = []
     const handleExpandClick = () => {
         setExpanded(!expanded);
@@ -68,7 +68,7 @@ export default function MLMovieCard({ title, stars, years, synopsis , img }) {
                 <IconButton aria-label="add to favorites">
                     {
                         starList.map(item=>{
-                            return <StarIcon key={`MlMovieCard_${item}`} style={{ color: '#f7ca18' }} />
+                            return <StarIcon key={`MlMovieCard_${item}`} style={{ color: '#f7ca18' , cursor : 'context-menu'}} />
                         })
                     }
                 </IconButton>

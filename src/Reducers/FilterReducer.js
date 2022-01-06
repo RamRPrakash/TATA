@@ -1,8 +1,8 @@
-import Response from '../../Pages/MovieList/component/Response'
-import {FILTER_TYPE} from './FilterTypes'
+import {FILTER_TYPE} from '../Types/FilterTypes'
+import response from '../Feed/response.json'
 
-var ListOfMovies = Response()
-const displayOrder = ListOfMovies.components.filter(item => item.type.toLowerCase() === 'movie-list')
+
+const displayOrder = response.components.filter(item => item.type.toLowerCase() === 'movie-list')
 
 const initialState = {
     FinalList: displayOrder[0]['items'] , 

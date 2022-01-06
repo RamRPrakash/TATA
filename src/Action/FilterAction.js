@@ -1,4 +1,4 @@
-import {FILTER_TYPE} from './FilterTypes'
+import {FILTER_TYPE} from '../Types/FilterTypes'
 
 export const filterType = (data)=>{
     return {

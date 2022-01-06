@@ -1,19 +1,17 @@
 import React ,{useState , useEffect } from 'react'
+import { useDispatch  } from 'react-redux'
 import MLSelectField from '../../../Components/MLSelectField'
-import Response from './Response'
-import filterType from '../../../redux'
-import {connect} from 'react-redux'
+import {filterType} from '../../../Action/FilterAction'
+import response from '../../../Feed/response.json'
 
- function MLAppBar(props){
-    var ListOfMovies = Response()
-    const displayOrder = ListOfMovies.components.filter(item => item.type.toLowerCase() === 'order-select')
+
+ function MLAppBar(){
+    const displayOrder = response.components.filter(item => item.type.toLowerCase() === 'order-select')
     const menuData = displayOrder.map(x=>x.items.map(list=> list.label))
     const [filterValue , setFilterValue] = useState(menuData[0][0])
-    //const [selectedDatas, setselectedData] = useState('')
+    const dispatch = useDispatch()
     const handleChange =(e)=>{
         setFilterValue(e.target.value)
-        console.log(menuData)
-        console.log(e)
         var selectedData =''
         displayOrder.forEach(x=>{
             x.items.forEach((item)=>{
@@ -22,9 +20,7 @@ import {connect} from 'react-redux'
                 }
             })
         })
-        props.filterType(selectedData)
-        // console.log(props.filterType(selectedData))
-        //setselectedData(selectedData)
+        dispatch(filterType(selectedData))
     }
     useEffect(()=>{
         const data = {target : {value : menuData[0][0]}}
@@ -40,16 +36,5 @@ import {connect} from 'react-redux'
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        FinalList: state.FinalList
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        filterType: (data) => dispatch(filterType(data))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MLAppBar)
+export default MLAppBar
